@@ -29,7 +29,7 @@ interface MenuFormProps {
 export function MenuForm({ menu }: MenuFormProps) {
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [merchants, setMerchants] = useState([])
+  const [merchants, setMerchants] = useState<{ id: number; name: string }[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export function MenuForm({ menu }: MenuFormProps) {
     fetchMerchants()
   }, [])
 
-  const form = useForm<MenuFormValues>({
+  const form = useForm({
     resolver: zodResolver(menuSchema),
     defaultValues: menu
       ? {
@@ -219,8 +219,6 @@ export function MenuForm({ menu }: MenuFormProps) {
                     <SelectContent>
                       <SelectItem value="Makanan">Makanan</SelectItem>
                       <SelectItem value="Minuman">Minuman</SelectItem>
-                      <SelectItem value="Snack">Snack</SelectItem>
-                      <SelectItem value="Dessert">Dessert</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
