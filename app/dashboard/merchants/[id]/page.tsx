@@ -3,8 +3,9 @@ import { PageHeader } from "@/components/page-header"
 import { getMerchantById } from "@/lib/data"
 
 export default async function EditMerchantPage({ params }: { params: { id: string } }) {
-  const isNew = params.id === "new"
-  const merchant = isNew ? null : await getMerchantById(Number.parseInt(params.id))
+  const resolvedParams = await params
+  const isNew = resolvedParams.id === "new"
+  const merchant = isNew ? null : await getMerchantById(Number.parseInt(resolvedParams.id))
 
   return (
     <div className="container max-w-md mx-auto px-4 pb-20">

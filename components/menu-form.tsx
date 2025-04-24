@@ -82,6 +82,8 @@ export function MenuForm({ menu }: MenuFormProps) {
         },
         body: JSON.stringify(data),
       })
+      console.log(response);
+      
 
       if (!response.ok) {
         throw new Error("Failed to save menu")
@@ -90,6 +92,8 @@ export function MenuForm({ menu }: MenuFormProps) {
       router.push("/dashboard/menus")
       router.refresh()
     } catch (error) {
+      console.log(error, "errrrrrrr");
+      
       console.error("Error saving menu:", error)
     } finally {
       setIsSubmitting(false)
@@ -219,6 +223,7 @@ export function MenuForm({ menu }: MenuFormProps) {
                     <SelectContent>
                       <SelectItem value="Makanan">Makanan</SelectItem>
                       <SelectItem value="Minuman">Minuman</SelectItem>
+                      <SelectItem value="Topping">Topping</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />

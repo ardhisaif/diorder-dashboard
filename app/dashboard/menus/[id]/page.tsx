@@ -3,8 +3,9 @@ import { PageHeader } from "@/components/page-header"
 import { getMenuById } from "@/lib/data"
 
 export default async function EditMenuPage({ params }: { params: { id: string } }) {
-  const isNew = params.id === "new"
-  const menu = isNew ? null : await getMenuById(Number.parseInt(params.id))
+  const resolvedParams = await params
+  const isNew = resolvedParams.id === "new"
+  const menu = isNew ? null : await getMenuById(Number.parseInt(resolvedParams.id))
 
   return (
     <div className="container max-w-md mx-auto px-4 pb-20">
@@ -13,4 +14,3 @@ export default async function EditMenuPage({ params }: { params: { id: string } 
     </div>
   )
 }
-

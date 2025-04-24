@@ -30,7 +30,7 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const id = Number.parseInt(params.id);
+    const id = Number.parseInt(params?.id);
     const updatedData = await request.json();
     const updatedMerchant = await updateMerchant(id, updatedData);
     return NextResponse.json(updatedMerchant);
