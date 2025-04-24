@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Food Merchant Dashboard",
   description: "Manage your food merchants and menus",
   generator: "v0.dev",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
